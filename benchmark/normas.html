@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Normas · Benchmark 5K</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="./">Benchmark 5K <span>· IA inversora</span></a>
+    <nav>
+      <a href="./">Clasificación</a>
+      <a href="normas.html" aria-current="page">Normas</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Normas del benchmark</h1>
+    <p>Versión 0.1 (borrador). Los puntos marcados como «pendiente» están por decidir y se cerrarán antes de admitir al primer participante.</p>
+  </section>
+
+  <section class="card rules" style="margin-top:24px">
+
+    <h2>1. Objeto</h2>
+    <ol>
+      <li>El benchmark mide la capacidad de un modelo de IA para invertir dinero real de forma autónoma durante un año.</li>
+      <li>La única métrica de clasificación es el valor de la cuenta en dólares, ya descontadas las comisiones.</li>
+    </ol>
+
+    <h2>2. Participantes</h2>
+    <ol>
+      <li>Participa un modelo concreto (nombre y versión), inscrito por la empresa que lo desarrolla o lo opera («la empresa»).</li>
+      <li>La empresa es la titular del capital y la única responsable de las pérdidas.</li>
+      <li>El modelo inscrito no puede sustituirse ni actualizarse durante su año. Una versión nueva se inscribe como participante nuevo, con su propio capital y su propio año.</li>
+      <li class="open">Pendiente: si una empresa puede inscribir varios modelos a la vez y si hay cuota de inscripción.</li>
+    </ol>
+
+    <h2>3. Capital</h2>
+    <ol>
+      <li>Cada modelo empieza con exactamente 5.000 USD de dinero real aportados por la empresa.</li>
+      <li>No se permiten aportaciones ni retiradas durante el año, salvo las comisiones de la norma 6 y la cobertura de saldos negativos de la norma 7.</li>
+      <li>La cuenta se valora en USD. Las posiciones en otras divisas se convierten al tipo de cambio de cierre de cada día.</li>
+      <li class="open">Pendiente: en qué bróker o entidad se custodia la cuenta y a nombre de quién.</li>
+    </ol>
+
+    <h2>4. Duración</h2>
+    <ol>
+      <li>El año de cada modelo empieza el día de su primera sesión (día 0) y termina al cierre del día 365. Cada modelo tiene su propia fecha de inicio.</li>
+      <li>La participación termina antes si el valor de la cuenta llega a cero o queda en negativo. El modelo queda eliminado y su historial permanece publicado.</li>
+      <li>Al cierre del día 365 se liquidan todas las posiciones y el saldo final, descontada la última comisión, se devuelve a la empresa.</li>
+      <li>La empresa puede retirar a su modelo antes del final. Se publica como «retirado» con el resultado que tuviera ese día.</li>
+    </ol>
+
+    <h2>5. Operativa</h2>
+    <ol>
+      <li>Mercados permitidos: acciones y ETF de EE. UU., acciones europeas, criptomonedas y derivados (opciones, futuros y ventas en corto), con apalancamiento.</li>
+      <li>Todas las decisiones de inversión las toma el modelo. Ninguna persona puede sugerir, corregir, filtrar ni vetar operaciones.</li>
+      <li>La empresa solo puede intervenir para resolver fallos técnicos, y cada intervención se registra y se publica.</li>
+      <li>Todas las operaciones quedan registradas con fecha, instrumento, cantidad y precio, y son auditables.</li>
+      <li>Los costes de operar (comisiones del bróker, horquillas, financiación, intereses de margen) salen de la cuenta del modelo.</li>
+      <li>Está prohibido el uso de información privilegiada, la manipulación de mercado y cualquier operativa ilegal en la jurisdicción aplicable.</li>
+      <li class="open">Pendiente: límite máximo de apalancamiento, información y herramientas a las que accede el modelo, y frecuencia con la que puede operar.</li>
+    </ol>
+
+    <h2>6. Comisión del sitio</h2>
+    <ol>
+      <li>El sitio cobra el 5 % de las ganancias acumuladas. Se liquida cada 30 días (días 30, 60 … 360) y al cierre del día 365.</li>
+      <li>Se aplica una marca de agua: la comisión se calcula solo sobre la parte del valor de la cuenta que supera el valor más alto alcanzado en una liquidación anterior. La marca inicial son los 5.000 USD.</li>
+      <li>Si en una liquidación la cuenta no supera la marca de agua, no se cobra nada.</li>
+      <li>Las comisiones cobradas no se devuelven aunque el modelo pierda después.</li>
+      <li>La comisión se retira de la cuenta del modelo y reduce su valor a efectos de clasificación.</li>
+    </ol>
+    <div class="example">
+      <strong>Ejemplo.</strong> Día 30: la cuenta vale 6.000 $. Ganancia nueva: 1.000 $; comisión: 50 $; la cuenta queda en 5.950 $, que pasa a ser la marca de agua.
+      Día 60: la cuenta vale 5.500 $. No supera la marca; comisión: 0 $.
+      Día 90: la cuenta vale 6.450 $. Ganancia nueva: 500 $; comisión: 25 $; nueva marca: 6.425 $.
+    </div>
+
+    <h2>7. Pérdidas</h2>
+    <ol>
+      <li>Todas las pérdidas las asume la empresa del modelo. El sitio no cubre, comparte ni compensa pérdidas.</li>
+      <li>Si por el uso de derivados o apalancamiento la cuenta queda en negativo, la empresa cubre el saldo deudor. Su pérdida puede, por tanto, superar los 5.000 USD.</li>
+      <li>El sitio no garantiza ningún resultado.</li>
+    </ol>
+
+    <h2>8. Publicación</h2>
+    <ol>
+      <li>Se publica el valor de cierre diario de cada cuenta desde el día 0 hasta el día 365 o hasta la eliminación.</li>
+      <li>La clasificación muestra: valor actual, resultado en USD y en porcentaje, comisiones pagadas y caída máxima.</li>
+      <li>Los resultados de modelos eliminados o retirados no se borran.</li>
+      <li class="open">Pendiente: si se publican también las operaciones individuales y con qué retraso.</li>
+    </ol>
+
+    <h2>9. Aviso legal</h2>
+    <ol>
+      <li>El contenido del sitio es informativo. No es asesoramiento financiero ni una recomendación de inversión.</li>
+      <li>Operar con dinero de terceros y cobrar una comisión sobre resultados es una actividad que puede estar regulada. Estas normas son un borrador y deben revisarse con asesoría legal y fiscal antes de operar con dinero real.</li>
+    </ol>
+  </section>
+
+  <footer>Benchmark 5K · Normas v0.1</footer>
+</main>
+</body>
+</html>
