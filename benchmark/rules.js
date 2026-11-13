@@ -5,7 +5,7 @@
     es: [
       ['1. Objeto', [
         'El benchmark mide la capacidad de un modelo de IA para invertir dinero real de forma autónoma durante un año.',
-        'La única métrica de clasificación es el valor de la cuenta en dólares, ya descontadas las comisiones.',
+        'La única métrica de clasificación es el valor neto en dólares: el valor de la cuenta menos las comisiones facturadas por el sitio.',
       ]],
       ['2. Participantes', [
         'Participa un modelo concreto (nombre y versión), inscrito por la empresa que lo desarrolla o lo opera («la empresa»).',
@@ -16,14 +16,15 @@
       ]],
       ['3. Capital', [
         'Cada modelo empieza con exactamente 5.000 USD de dinero real aportados por la empresa.',
-        'No se permiten aportaciones ni retiradas durante el año, salvo las comisiones de la norma 6 y la cobertura de saldos negativos de la norma 7.',
+        'No se permiten aportaciones ni retiradas durante el año, salvo la cobertura de saldos negativos de la norma 7.',
         'La cuenta se valora en USD. Las posiciones en otras divisas se convierten al tipo de cambio de cierre de cada día.',
-        '?Pendiente: en qué bróker o entidad se custodia la cuenta y a nombre de quién.',
+        'La cuenta se abre a nombre de la empresa, en el bróker que designe el sitio, que es el mismo para todos los participantes. La empresa da al sitio acceso de solo lectura a la cuenta.',
+        '?Pendiente: bróker designado.',
       ]],
       ['4. Duración', [
         'El año de cada modelo empieza el día de su primera sesión (día 0) y termina al cierre del día 365. Cada modelo tiene su propia fecha de inicio.',
         'La participación termina antes si el valor de la cuenta llega a cero o queda en negativo. El modelo queda eliminado y su historial permanece publicado.',
-        'Al cierre del día 365 se liquidan todas las posiciones y el saldo final, descontada la última comisión, se devuelve a la empresa.',
+        'Al cierre del día 365 se cierran todas las posiciones y se factura la última comisión. El saldo permanece en la cuenta de la empresa.',
         'La empresa puede retirar a su modelo antes del final. Se publica como «retirado» con el resultado que tuviera ese día.',
       ]],
       ['5. Operativa', [
@@ -34,26 +35,28 @@
         'Todas las operaciones quedan registradas con fecha, instrumento, cantidad y precio, y son auditables.',
         'Los costes de operar (comisiones del bróker, horquillas, financiación, intereses de margen) salen de la cuenta del modelo.',
         'Está prohibido el uso de información privilegiada, la manipulación de mercado y cualquier operativa ilegal en la jurisdicción aplicable.',
-        '?Pendiente: límite máximo de apalancamiento.',
+        'El apalancamiento máximo es de 3 veces el valor de la cuenta (exposición total de las posiciones dividida entre el valor de la cuenta).',
+        'Está prohibida la venta de opciones al descubierto.',
       ]],
       ['6. Comisión del sitio', [
         'El sitio cobra el 5 % de las ganancias acumuladas. Se liquida cada 30 días (días 30, 60 … 360) y al cierre del día 365.',
-        'Se aplica una marca de agua: la comisión se calcula solo sobre la parte del valor de la cuenta que supera el valor más alto alcanzado en una liquidación anterior. La marca inicial son los 5.000 USD.',
-        'Si en una liquidación la cuenta no supera la marca de agua, no se cobra nada.',
+        'Se aplica una marca de agua: la comisión se calcula solo sobre la parte del valor neto que supera el valor neto más alto alcanzado en una liquidación anterior. La marca inicial son los 5.000 USD.',
+        'Si en una liquidación el valor neto no supera la marca de agua, no se cobra nada. El sitio solo cobra a la empresa cuando el modelo tiene ganancias.',
         'Las comisiones cobradas no se devuelven aunque el modelo pierda después.',
-        'La comisión se retira de la cuenta del modelo y reduce su valor a efectos de clasificación.',
-      ], '<strong>Ejemplo.</strong> Día 30: la cuenta vale 6.000 $. Ganancia nueva: 1.000 $; comisión: 50 $; la cuenta queda en 5.950 $, que pasa a ser la marca de agua. Día 60: la cuenta vale 5.500 $. No supera la marca; comisión: 0 $. Día 90: la cuenta vale 6.450 $. Ganancia nueva: 500 $; comisión: 25 $; nueva marca: 6.425 $.'],
+        'La comisión se factura a la empresa en cada liquidación y no se retira de la cuenta del modelo. El valor neto publicado descuenta todas las comisiones facturadas.',
+      ], '<strong>Ejemplo.</strong> Día 30: el valor neto es 6.000 $. Ganancia nueva: 1.000 $; comisión: 50 $; el valor neto queda en 5.950 $, que pasa a ser la marca de agua. Día 60: el valor neto es 5.500 $. No supera la marca; comisión: 0 $. Día 90: el valor neto es 6.450 $. Ganancia nueva: 500 $; comisión: 25 $; nueva marca: 6.425 $.'],
       ['7. Pérdidas', [
         'Todas las pérdidas las asume la empresa del modelo. El sitio no cubre, comparte ni compensa pérdidas.',
         'Si por el uso de derivados o apalancamiento la cuenta queda en negativo, la empresa cubre el saldo deudor. Su pérdida puede, por tanto, superar los 5.000 USD.',
         'El sitio no garantiza ningún resultado.',
       ]],
       ['8. Publicación', [
-        'Se publica, de forma gratuita, el valor de cierre diario de cada cuenta desde el día 0 hasta el día 365 o hasta la eliminación.',
+        'Los resultados de cada cuenta se publican de forma gratuita y se actualizan cada 3 horas, desde el día 0 hasta el día 365 o hasta la eliminación. El sitio los lee automáticamente del bróker.',
         'La clasificación muestra: valor actual, resultado en USD y en porcentaje, comisiones pagadas y caída máxima.',
         'Los resultados de modelos eliminados o retirados no se borran.',
-        'El detalle de las operaciones individuales es un servicio de pago para los usuarios del sitio.',
-        '?Pendiente: precio del acceso a las operaciones individuales y retraso con el que se publican.',
+        'Los usuarios pueden suscribirse al servicio de inversión de un modelo para seguir sus operaciones. El sitio cobra por cada usuario suscrito.',
+        'Los usuarios pueden solicitar un informe detallado de un modelo. Se cobra por cada solicitud.',
+        '?Pendiente: precios de la suscripción y del informe detallado, y medio de pago.',
       ]],
       ['9. Aviso legal e idiomas', [
         'El contenido del sitio es informativo. No es asesoramiento financiero ni una recomendación de inversión.',
@@ -65,7 +68,7 @@
     en: [
       ['1. Purpose', [
         'The benchmark measures an AI model’s ability to invest real money on its own for one year.',
-        'The only ranking metric is the account value in US dollars, after fees.',
+        'The only ranking metric is the net value in US dollars: the account value minus the fees invoiced by the site.',
       ]],
       ['2. Participants', [
         'A participant is a specific model (name and version), entered by the company that develops or operates it (“the company”).',
@@ -76,14 +79,15 @@
       ]],
       ['3. Capital', [
         'Each model starts with exactly USD 5,000 of real money provided by the company.',
-        'No deposits or withdrawals are allowed during the year, except the fees in rule 6 and the covering of negative balances in rule 7.',
+        'No deposits or withdrawals are allowed during the year, except the covering of negative balances in rule 7.',
         'The account is valued in USD. Positions in other currencies are converted at each day’s closing exchange rate.',
-        '?Pending: which broker or institution holds the account, and in whose name.',
+        'The account is opened in the company’s name, at the broker designated by the site, which is the same for all participants. The company gives the site read-only access to the account.',
+        '?Pending: designated broker.',
       ]],
       ['4. Duration', [
         'Each model’s year starts on its first trading day (day 0) and ends at the close of day 365. Each model has its own start date.',
         'Participation ends earlier if the account value reaches zero or goes negative. The model is eliminated and its history remains published.',
-        'At the close of day 365 all positions are liquidated and the final balance, less the last fee, is returned to the company.',
+        'At the close of day 365 all positions are closed and the last fee is invoiced. The balance remains in the company’s account.',
         'The company may withdraw its model before the end. It is published as “withdrawn” with the result it had on that day.',
       ]],
       ['5. Trading', [
@@ -94,26 +98,28 @@
         'Every trade is recorded with date, instrument, quantity and price, and can be audited.',
         'Trading costs (broker commissions, spreads, financing, margin interest) are paid from the model’s account.',
         'Insider trading, market manipulation and any trading that is illegal in the applicable jurisdiction are prohibited.',
-        '?Pending: maximum leverage.',
+        'Maximum leverage is 3 times the account value (total exposure of the positions divided by the account value).',
+        'Selling uncovered options is prohibited.',
       ]],
       ['6. Site fee', [
         'The site charges 5% of accumulated gains. It is settled every 30 days (days 30, 60 … 360) and at the close of day 365.',
-        'A high-water mark applies: the fee is calculated only on the part of the account value that exceeds the highest value reached at a previous settlement. The initial mark is USD 5,000.',
-        'If at a settlement the account is not above the high-water mark, nothing is charged.',
+        'A high-water mark applies: the fee is calculated only on the part of the net value that exceeds the highest net value reached at a previous settlement. The initial mark is USD 5,000.',
+        'If at a settlement the net value is not above the high-water mark, nothing is charged. The site charges the company only when the model has gains.',
         'Fees already charged are not refunded even if the model loses money later.',
-        'The fee is withdrawn from the model’s account and reduces its value for ranking purposes.',
-      ], '<strong>Example.</strong> Day 30: the account is worth $6,000. New gain: $1,000; fee: $50; the account is left at $5,950, which becomes the high-water mark. Day 60: the account is worth $5,500. It is not above the mark; fee: $0. Day 90: the account is worth $6,450. New gain: $500; fee: $25; new mark: $6,425.'],
+        'The fee is invoiced to the company at each settlement and is not withdrawn from the model’s account. The published net value deducts all fees invoiced.',
+      ], '<strong>Example.</strong> Day 30: the net value is $6,000. New gain: $1,000; fee: $50; the net value is left at $5,950, which becomes the high-water mark. Day 60: the net value is $5,500. It is not above the mark; fee: $0. Day 90: the net value is $6,450. New gain: $500; fee: $25; new mark: $6,425.'],
       ['7. Losses', [
         'All losses are borne by the model’s company. The site does not cover, share or compensate losses.',
         'If the use of derivatives or leverage leaves the account negative, the company covers the debit balance. Its loss can therefore exceed USD 5,000.',
         'The site does not guarantee any result.',
       ]],
       ['8. Publication', [
-        'The daily closing value of each account is published free of charge from day 0 until day 365 or until elimination.',
+        'The results of each account are published free of charge and updated every 3 hours, from day 0 until day 365 or until elimination. The site reads them automatically from the broker.',
         'The leaderboard shows: current value, result in USD and as a percentage, fees paid and maximum drawdown.',
         'Results of eliminated or withdrawn models are not deleted.',
-        'The detail of individual trades is a paid service for users of the site.',
-        '?Pending: the price of access to individual trades and the delay with which they are published.',
+        'Users may subscribe to a model’s investment service to follow its trades. The site charges for each subscribed user.',
+        'Users may request a detailed report on a model. It is charged per request.',
+        '?Pending: prices of the subscription and of the detailed report, and payment method.',
       ]],
       ['9. Legal notice and languages', [
         'The content of the site is informational. It is not financial advice or an investment recommendation.',
@@ -125,7 +131,7 @@
     zh: [
       ['1. 目的', [
         '本基准测试衡量 AI 模型在一年内自主投资真实资金的能力。',
-        '唯一的排名指标是扣除佣金后的账户美元价值。',
+        '唯一的排名指标是以美元计的净值：账户价值减去本站已开具账单的佣金。',
       ]],
       ['2. 参赛者', [
         '参赛者为某一具体模型（名称和版本），由开发或运营该模型的公司（“公司”）报名。',
@@ -136,14 +142,15 @@
       ]],
       ['3. 资金', [
         '每个模型以公司提供的恰好 5,000 美元真实资金起步。',
-        '年度内不得存入或提取资金，但第 6 条的佣金和第 7 条的负余额补足除外。',
+        '年度内不得存入或提取资金，但第 7 条的负余额补足除外。',
         '账户以美元计价。其他货币的持仓按每日收盘汇率折算。',
-        '?待定：账户由哪家券商或机构托管，以及以谁的名义开立。',
+        '账户以公司名义在本站指定的券商开立，所有参赛者使用同一家券商。公司向本站提供该账户的只读访问权限。',
+        '?待定：指定的券商。',
       ]],
       ['4. 期限', [
         '每个模型的年度自其首个交易日（第 0 天）开始，到第 365 天收盘时结束。每个模型有各自的起始日期。',
         '如果账户价值归零或变为负数，参赛提前结束。该模型被淘汰，其历史记录继续公布。',
-        '第 365 天收盘时清算所有持仓，最终余额扣除最后一笔佣金后返还公司。',
+        '第 365 天收盘时平掉所有持仓，并开具最后一笔佣金账单。余额保留在公司的账户中。',
         '公司可以在结束前撤回其模型。该模型将以“已撤回”状态公布，并保留当天的结果。',
       ]],
       ['5. 交易', [
@@ -154,26 +161,28 @@
         '所有交易均记录日期、品种、数量和价格，并可接受审计。',
         '交易成本（券商佣金、买卖价差、融资费用、保证金利息）从模型账户中支付。',
         '禁止内幕交易、操纵市场以及在适用司法管辖区内违法的任何交易。',
-        '?待定：最高杠杆限制。',
+        '最高杠杆为账户价值的 3 倍（持仓总敞口除以账户价值）。',
+        '禁止卖出无担保期权。',
       ]],
       ['6. 本站佣金', [
         '本站收取累计收益的 5%。每 30 天结算一次（第 30、60 … 360 天），并在第 365 天收盘时结算。',
-        '采用高水位线：佣金仅按账户价值中超过此前结算时所达最高值的部分计算。初始水位线为 5,000 美元。',
-        '如果结算时账户未超过高水位线，则不收取任何费用。',
+        '采用高水位线：佣金仅按净值中超过此前结算时所达最高净值的部分计算。初始水位线为 5,000 美元。',
+        '如果结算时净值未超过高水位线，则不收取任何费用。只有在模型有收益时，本站才向公司收费。',
         '已收取的佣金不予退还，即使模型此后亏损。',
-        '佣金从模型账户中扣除，并相应减少其用于排名的价值。',
-      ], '<strong>示例。</strong>第 30 天：账户价值 6,000 美元。新增收益 1,000 美元；佣金 50 美元；账户余额为 5,950 美元，并成为新的高水位线。第 60 天：账户价值 5,500 美元，未超过水位线；佣金 0 美元。第 90 天：账户价值 6,450 美元。新增收益 500 美元；佣金 25 美元；新水位线为 6,425 美元。'],
+        '佣金在每次结算时向公司开具账单，不从模型账户中扣除。公布的净值已扣除所有已开具账单的佣金。',
+      ], '<strong>示例。</strong>第 30 天：净值 6,000 美元。新增收益 1,000 美元；佣金 50 美元；净值为 5,950 美元，并成为新的高水位线。第 60 天：净值 5,500 美元，未超过水位线；佣金 0 美元。第 90 天：净值 6,450 美元。新增收益 500 美元；佣金 25 美元；新水位线为 6,425 美元。'],
       ['7. 亏损', [
         '所有亏损均由模型所属公司承担。本站不承担、不分担、也不补偿亏损。',
         '如果因使用衍生品或杠杆导致账户为负，公司须补足欠款。因此其亏损可能超过 5,000 美元。',
         '本站不保证任何结果。',
       ]],
       ['8. 公布', [
-        '自第 0 天起至第 365 天或被淘汰为止，免费公布每个账户的每日收盘价值。',
+        '自第 0 天起至第 365 天或被淘汰为止，免费公布每个账户的结果，每 3 小时更新一次。本站自动从券商读取数据。',
         '排行榜显示：当前价值、以美元和百分比表示的盈亏、已付佣金和最大回撤。',
         '被淘汰或撤回的模型的结果不会被删除。',
-        '逐笔交易明细是面向本站用户的付费服务。',
-        '?待定：逐笔交易访问权限的价格及其公布的延迟时间。',
+        '用户可以订阅某个模型的投资服务以跟踪其交易。本站按每位订阅用户收费。',
+        '用户可以申请某个模型的详细报告，按每次申请收费。',
+        '?待定：订阅和详细报告的价格，以及支付方式。',
       ]],
       ['9. 法律声明与语言', [
         '本站内容仅供参考，不构成财务建议或投资推荐。',
@@ -185,7 +194,7 @@
     ar: [
       ['1. الغرض', [
         'يقيس هذا المعيار قدرة نموذج الذكاء الاصطناعي على استثمار أموال حقيقية بشكل مستقل لمدة عام.',
-        'المقياس الوحيد للترتيب هو قيمة الحساب بالدولار الأمريكي بعد خصم العمولات.',
+        'المقياس الوحيد للترتيب هو القيمة الصافية بالدولار الأمريكي: قيمة الحساب ناقص العمولات التي أصدر الموقع فواتيرها.',
       ]],
       ['2. المشاركون', [
         'المشارك هو نموذج محدد (باسمه وإصداره)، تسجِّله الشركة التي تطوِّره أو تشغِّله («الشركة»).',
@@ -196,14 +205,15 @@
       ]],
       ['3. رأس المال', [
         'يبدأ كل نموذج بمبلغ 5,000 دولار أمريكي بالضبط من المال الحقيقي تقدِّمه الشركة.',
-        'لا يُسمح بالإيداع أو السحب خلال العام، باستثناء العمولات الواردة في القاعدة 6 وتغطية الأرصدة السالبة الواردة في القاعدة 7.',
+        'لا يُسمح بالإيداع أو السحب خلال العام، باستثناء تغطية الأرصدة السالبة الواردة في القاعدة 7.',
         'يُقيَّم الحساب بالدولار الأمريكي. تُحوَّل المراكز بالعملات الأخرى بسعر صرف الإغلاق لكل يوم.',
-        '?معلَّق: الوسيط أو الجهة التي تحفظ الحساب، وباسم مَن يُفتح.',
+        'يُفتح الحساب باسم الشركة لدى الوسيط الذي يحدده الموقع، وهو نفسه لجميع المشاركين. تمنح الشركة الموقع صلاحية الاطلاع فقط على الحساب.',
+        '?معلَّق: الوسيط المحدَّد.',
       ]],
       ['4. المدة', [
         'يبدأ عام كل نموذج في أول يوم تداول له (اليوم 0) وينتهي عند إغلاق اليوم 365. لكل نموذج تاريخ بدء خاص به.',
         'تنتهي المشاركة قبل ذلك إذا وصلت قيمة الحساب إلى الصفر أو أصبحت سالبة. يُستبعد النموذج ويبقى سجله منشورًا.',
-        'عند إغلاق اليوم 365 تُصفَّى جميع المراكز ويُعاد الرصيد النهائي إلى الشركة بعد خصم العمولة الأخيرة.',
+        'عند إغلاق اليوم 365 تُغلق جميع المراكز وتُصدر فاتورة العمولة الأخيرة. يبقى الرصيد في حساب الشركة.',
         'يجوز للشركة سحب نموذجها قبل النهاية. يُنشر بصفة «منسحب» مع النتيجة التي كان عليها في ذلك اليوم.',
       ]],
       ['5. التداول', [
@@ -214,26 +224,28 @@
         'تُسجَّل جميع الصفقات بالتاريخ والأداة والكمية والسعر، وتكون قابلة للتدقيق.',
         'تُدفع تكاليف التداول (عمولات الوسيط وفروق الأسعار والتمويل وفوائد الهامش) من حساب النموذج.',
         'يُحظر التداول بناءً على معلومات داخلية والتلاعب بالسوق وأي تداول غير قانوني في الولاية القضائية المعمول بها.',
-        '?معلَّق: الحد الأقصى للرافعة المالية.',
+        'الحد الأقصى للرافعة المالية هو 3 أضعاف قيمة الحساب (إجمالي انكشاف المراكز مقسومًا على قيمة الحساب).',
+        'يُحظر بيع الخيارات غير المغطاة.',
       ]],
       ['6. عمولة الموقع', [
         'يحصِّل الموقع 5% من الأرباح المتراكمة. تُسوَّى كل 30 يومًا (الأيام 30 و60 … 360) وعند إغلاق اليوم 365.',
-        'تُطبَّق قاعدة أعلى قيمة سابقة: تُحسب العمولة فقط على الجزء من قيمة الحساب الذي يتجاوز أعلى قيمة بلغها في تسوية سابقة. القيمة المرجعية الأولية هي 5,000 دولار أمريكي.',
-        'إذا لم يتجاوز الحساب عند التسوية أعلى قيمة سابقة، فلا يُحصَّل شيء.',
+        'تُطبَّق قاعدة أعلى قيمة سابقة: تُحسب العمولة فقط على الجزء من القيمة الصافية الذي يتجاوز أعلى قيمة صافية بلغها في تسوية سابقة. القيمة المرجعية الأولية هي 5,000 دولار أمريكي.',
+        'إذا لم تتجاوز القيمة الصافية عند التسوية أعلى قيمة سابقة، فلا يُحصَّل شيء. لا يحصِّل الموقع من الشركة إلا عندما يحقق النموذج أرباحًا.',
         'لا تُردّ العمولات المحصَّلة حتى لو خسر النموذج لاحقًا.',
-        'تُسحب العمولة من حساب النموذج وتخفِّض قيمته لأغراض الترتيب.',
-      ], '<strong>مثال.</strong> اليوم 30: قيمة الحساب 6,000 دولار. الربح الجديد 1,000 دولار؛ العمولة 50 دولارًا؛ يبقى في الحساب 5,950 دولارًا، وتصبح هي القيمة المرجعية الجديدة. اليوم 60: قيمة الحساب 5,500 دولار. لم يتجاوز القيمة المرجعية؛ العمولة 0 دولار. اليوم 90: قيمة الحساب 6,450 دولارًا. الربح الجديد 500 دولار؛ العمولة 25 دولارًا؛ القيمة المرجعية الجديدة 6,425 دولارًا.'],
+        'تُصدر فاتورة العمولة للشركة عند كل تسوية ولا تُسحب من حساب النموذج. القيمة الصافية المنشورة تُخصم منها جميع العمولات التي صدرت فواتيرها.',
+      ], '<strong>مثال.</strong> اليوم 30: القيمة الصافية 6,000 دولار. الربح الجديد 1,000 دولار؛ العمولة 50 دولارًا؛ تصبح القيمة الصافية 5,950 دولارًا، وهي القيمة المرجعية الجديدة. اليوم 60: القيمة الصافية 5,500 دولار. لم تتجاوز القيمة المرجعية؛ العمولة 0 دولار. اليوم 90: القيمة الصافية 6,450 دولارًا. الربح الجديد 500 دولار؛ العمولة 25 دولارًا؛ القيمة المرجعية الجديدة 6,425 دولارًا.'],
       ['7. الخسائر', [
         'تتحمل شركة النموذج جميع الخسائر. لا يغطي الموقع الخسائر ولا يشارك فيها ولا يعوِّض عنها.',
         'إذا أصبح الحساب سالبًا بسبب استخدام المشتقات أو الرافعة المالية، تغطي الشركة الرصيد المدين. ولذلك قد تتجاوز خسارتها 5,000 دولار أمريكي.',
         'لا يضمن الموقع أي نتيجة.',
       ]],
       ['8. النشر', [
-        'تُنشر مجانًا قيمة الإغلاق اليومية لكل حساب من اليوم 0 حتى اليوم 365 أو حتى الاستبعاد.',
+        'تُنشر نتائج كل حساب مجانًا وتُحدَّث كل 3 ساعات، من اليوم 0 حتى اليوم 365 أو حتى الاستبعاد. يقرأ الموقع البيانات تلقائيًا من الوسيط.',
         'يعرض الترتيب: القيمة الحالية، والنتيجة بالدولار وبالنسبة المئوية، والعمولات المدفوعة، وأقصى تراجع.',
         'لا تُحذف نتائج النماذج المستبعَدة أو المنسحبة.',
-        'تفاصيل الصفقات الفردية خدمة مدفوعة لمستخدمي الموقع.',
-        '?معلَّق: سعر الوصول إلى الصفقات الفردية ومدة التأخير في نشرها.',
+        'يمكن للمستخدمين الاشتراك في خدمة الاستثمار الخاصة بنموذج معيّن لمتابعة صفقاته. يحصِّل الموقع مبلغًا عن كل مستخدم مشترك.',
+        'يمكن للمستخدمين طلب تقرير مفصَّل عن نموذج معيّن، ويُدفع عند كل طلب.',
+        '?معلَّق: سعر الاشتراك وسعر التقرير المفصَّل، ووسيلة الدفع.',
       ]],
       ['9. إشعار قانوني واللغات', [
         'محتوى الموقع لأغراض إعلامية. لا يُعد استشارة مالية ولا توصية استثمارية.',

@@ -29,22 +29,20 @@ const models = specs.map(s => {
   const r = rng(s.seed);
   const days = Math.min(DURATION, Math.floor((today - new Date(s.startDate + 'T00:00:00Z')) / 864e5));
   const values = [CAPITAL];
-  let v = CAPITAL, hwm = CAPITAL;
+  let v = CAPITAL;
   for (let d = 1; d <= days; d++) {
     v = v * (1 + s.drift + s.vol * gauss(r));
     // Ejemplo de posición apalancada que abre con hueco y deja la cuenta en negativo.
     if (s.gapBelow && v < s.gapBelow) v = -Math.round(r() * 400);
     if (v <= 0) { values.push(Math.round(v * 100) / 100); break; } // capital agotado
     values.push(Math.round(v * 100) / 100);
-    // Tras el cierre de un día de liquidación, la comisión sale de la cuenta.
-    if ((d % PERIOD === 0 || d === DURATION) && v > hwm) { v -= FEE * (v - hwm); hwm = v; }
   }
   return { id: s.id, name: s.name, company: s.company, startDate: s.startDate, values };
 });
 
 const out = {
   demo: true,
-  updated: today.toISOString().slice(0, 10),
+  updated: today.toISOString().slice(0, 10) + 'T15:00:00Z', // los resultados se actualizan cada 3 horas
   initialCapital: CAPITAL, feeRate: FEE, feePeriodDays: PERIOD, durationDays: DURATION,
   models,
 };

@@ -1,6 +1,6 @@
 // Benchmark 5K — lee data/models.json y calcula comisiones, estado y clasificación.
 // Formato de datos: ver README.md. values[d] = saldo de cierre de la cuenta en el día d
-// (en días de liquidación, antes de retirar la comisión).
+// en el bróker. La comisión se factura aparte, no sale de la cuenta.
 (async function () {
   const data = await (await fetch('data/models.json', { cache: 'no-cache' })).json();
   const { initialCapital: CAP, feeRate: FEE, feePeriodDays: PERIOD, durationDays: DUR } = data;
@@ -11,7 +11,9 @@
   const usd = (n, d = 0) => money(n, d, false);
   const signed = (n, d = 0) => money(n, d, true);
   const pct = n => new Intl.NumberFormat(NUM, { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1, signDisplay: 'exceptZero' }).format(n / 100);
-  const date = (iso, opts) => new Date(iso + 'T00:00:00').toLocaleDateString(LOC, opts);
+  const date = (iso, opts) => iso.includes('T')
+    ? new Date(iso).toLocaleString(LOC, { ...opts, hour: '2-digit', minute: '2-digit' })
+    : new Date(iso + 'T00:00:00').toLocaleDateString(LOC, opts);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   // --- Cálculo por modelo -------------------------------------------------
@@ -19,8 +21,9 @@
     let hwm = CAP, fees = 0, peak = CAP, maxDd = 0, out = false;
     const net = []; // valor tras comisiones, por día
     for (let d = 0; d < m.values.length && d <= DUR; d++) {
-      let v = m.values[d];
-      if (v <= 0) { net.push(v); out = true; break; }        // capital agotado: eliminado
+      const account = m.values[d];
+      let v = account - fees;                                   // valor neto = cuenta − comisiones facturadas
+      if (account <= 0) { net.push(v); out = true; break; }        // capital agotado: eliminado
       if (d > 0 && (d % PERIOD === 0 || d === DUR) && v > hwm) { // liquidación con marca de agua
         const fee = FEE * (v - hwm);
         fees += fee; v -= fee; hwm = v;
