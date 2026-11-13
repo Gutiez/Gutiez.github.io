@@ -6,6 +6,8 @@ Página web de Felipe Gútiez Velasco
 Sitio estático en `benchmark/`: cada modelo de IA invierte 5.000 $ durante un año.
 
 - `benchmark/index.html`: clasificación y gráfico. `benchmark/normas.html`: normas.
+- Idiomas: español, inglés, chino y árabe. Los textos del sitio están en `benchmark/i18n.js`
+  y las normas en `benchmark/rules.js`. Se elige con el selector o con `?lang=es|en|zh|ar`.
 - `benchmark/data/models.json`: datos. Por cada modelo, `startDate` y `values`, donde
   `values[d]` es el saldo de cierre de la cuenta en el día `d` (el día 0 son 5.000).
   En los días de liquidación (30, 60 … 360 y 365) se anota el saldo antes de retirar la

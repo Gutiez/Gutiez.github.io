@@ -5,9 +5,13 @@
   const data = await (await fetch('data/models.json', { cache: 'no-cache' })).json();
   const { initialCapital: CAP, feeRate: FEE, feePeriodDays: PERIOD, durationDays: DUR } = data;
 
-  const usd = (n, d = 0) => (n < 0 ? '−' : '') + Math.abs(n).toLocaleString('es-ES', { minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always' }) + ' $';
-  const signed = (n, d = 0) => (n > 0 ? '+' : '') + usd(n, d);
-  const pct = n => (n > 0 ? '+' : n < 0 ? '−' : '') + Math.abs(n).toLocaleString('es-ES', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' %';
+  const { t, locale: LOC, numLocale: NUM } = window.I18N;
+  const money = (n, d, sign) => new Intl.NumberFormat(NUM, { style: 'currency', currency: 'USD', currencyDisplay: 'narrowSymbol',
+    minimumFractionDigits: d, maximumFractionDigits: d, useGrouping: 'always', signDisplay: sign ? 'exceptZero' : 'auto' }).format(n);
+  const usd = (n, d = 0) => money(n, d, false);
+  const signed = (n, d = 0) => money(n, d, true);
+  const pct = n => new Intl.NumberFormat(NUM, { style: 'percent', minimumFractionDigits: 1, maximumFractionDigits: 1, signDisplay: 'exceptZero' }).format(n / 100);
+  const date = (iso, opts) => new Date(iso + 'T00:00:00').toLocaleDateString(LOC, opts);
   const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 
   // --- Cálculo por modelo -------------------------------------------------
@@ -45,31 +49,31 @@
   const live = models.filter(m => m.status === 'live').length;
   const outN = models.filter(m => m.status === 'out').length;
   document.getElementById('tiles').innerHTML = [
-    ['Modelos en competición', live, `${models.length} inscritos · ${outN} eliminado${outN === 1 ? '' : 's'}`],
-    ['Líder', best ? esc(best.name) : '—', best ? `${signed(best.pnl)} (${pct(best.pnl / CAP * 100)})` : ''],
-    ['Comisiones cobradas', usd(totalFees), '5 % de ganancias, cada 30 días'],
-    ['Pérdidas asumidas por las empresas', usd(Math.abs(totalLoss)), 'suma de las cuentas en negativo'],
+    [t('tLive'), live, t('tLiveSub', { n: models.length, o: outN })],
+    [t('tLeader'), best ? esc(best.name) : '—', best ? `<span dir="ltr">${signed(best.pnl)} (${pct(best.pnl / CAP * 100)})</span>` : ''],
+    [t('tFees'), usd(totalFees), t('tFeesSub')],
+    [t('tLoss'), usd(Math.abs(totalLoss)), t('tLossSub')],
   ].map(([l, v, s]) => `<div class="tile"><div class="label">${l}</div><div class="value">${v}</div><div class="sub">${s}</div></div>`).join('');
 
   // --- Tabla ---------------------------------------------------------------
-  const STATUS = { live: 'En curso', done: 'Año completado', out: 'Eliminado' };
+  const STATUS = { live: t('live'), done: t('done'), out: t('out') };
   document.getElementById('updated').textContent =
-    `Ordenada por valor actual de la cuenta. Última actualización: ${new Date(data.updated + 'T00:00:00').toLocaleDateString('es-ES', { day: 'numeric', month: 'long', year: 'numeric' })}.`;
+    t('updated', { date: date(data.updated, { day: 'numeric', month: 'long', year: 'numeric' }) });
   document.getElementById('rows').innerHTML = ranked.map((m, i) => {
     const cls = m.pnl > 0 ? 'up' : m.pnl < 0 ? 'down' : '';
     const arrow = m.pnl > 0 ? '▲' : m.pnl < 0 ? '▼' : '';
     return `<tr>
       <td>${i + 1}</td>
-      <td><span class="name"><i style="background:${m.color}"></i>${esc(m.name)}</span><span class="company">${esc(m.company)} · inicio ${new Date(m.startDate + 'T00:00:00').toLocaleDateString('es-ES')}</span></td>
+      <td><span class="name"><i style="background:${m.color}"></i>${esc(m.name)}</span><span class="company">${esc(m.company)} · ${t('start')} ${date(m.startDate)}</span></td>
       <td><span class="badge ${m.status === 'out' ? 'out' : ''}">${STATUS[m.status]}</span></td>
       <td>${m.day} / ${DUR}</td>
-      <td>${usd(m.value, 2)}</td>
+      <td dir="ltr">${usd(m.value, 2)}</td>
       <td><span class="${cls}">${arrow}</span> ${signed(m.pnl, 2)}</td>
-      <td>${pct(m.pnl / CAP * 100)}</td>
-      <td>${usd(m.fees, 2)}</td>
-      <td>${pct(-m.maxDd * 100)}</td>
+      <td dir="ltr">${pct(m.pnl / CAP * 100)}</td>
+      <td dir="ltr">${usd(m.fees, 2)}</td>
+      <td dir="ltr">${pct(-m.maxDd * 100)}</td>
     </tr>`;
-  }).join('') || '<tr><td colspan="9" style="text-align:center">Todavía no hay modelos inscritos.</td></tr>';
+  }).join('') || `<tr><td colspan="9" style="text-align:center">${t('empty')}</td></tr>`;
 
   // --- Leyenda (activa/desactiva series) ----------------------------------
   const legend = document.getElementById('legend');
@@ -111,7 +115,7 @@
       s += `<line x1="${M.l}" x2="${W - M.r}" y1="${y(v)}" y2="${y(v)}" stroke="var(--grid)"/>` +
            `<text x="${M.l - 8}" y="${y(v) + 4}" text-anchor="end">${usd(v)}</text>`;
     const xt = W < 520 ? [0, 90, 180, 270, 365] : [0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330, 365];
-    xt.forEach(d => { s += `<text x="${x(d)}" y="${H - 10}" text-anchor="${d === 365 ? 'end' : d === 0 ? 'start' : 'middle'}">${d === 0 ? 'Día 0' : d}</text>`; });
+    xt.forEach(d => { s += `<text x="${x(d)}" y="${H - 10}" text-anchor="${d === 365 ? 'end' : d === 0 ? 'start' : 'middle'}">${d === 0 ? t('day0') : d}</text>`; });
     s += `<line x1="${M.l}" x2="${W - M.r}" y1="${y(CAP)}" y2="${y(CAP)}" stroke="var(--text-muted)" stroke-dasharray="4 4"/>`;
     shown.forEach(m => {
       const pts = m.net.map((v, d) => `${x(d).toFixed(1)},${y(v).toFixed(1)}`).join(' ');
@@ -126,7 +130,7 @@
     const svg = document.createElementNS(NS, 'svg');
     svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
     svg.setAttribute('role', 'img');
-    svg.setAttribute('aria-label', 'Gráfico de líneas con el valor de la cuenta de cada modelo por día de competición. Los mismos datos están en la tabla de clasificación.');
+    svg.setAttribute('aria-label', t('chartAria'));
     svg.innerHTML = s;
     chart.prepend(svg);
     geo = { W, H, M, x, y, shown, svg };
@@ -147,7 +151,7 @@
     cross.setAttribute('x1', x(d)); cross.setAttribute('x2', x(d));
     svg.querySelector('#dots').innerHTML = rows.map(m =>
       `<circle cx="${x(d)}" cy="${y(m.net[d])}" r="4" fill="${m.color}" stroke="var(--surface-1)" stroke-width="2"/>`).join('');
-    tip.innerHTML = `<div class="t">Día ${d}${d > 0 && (d % PERIOD === 0 || d === DUR) ? ' · liquidación de comisión' : ''}</div>` +
+    tip.innerHTML = `<div class="t">${t('tipDay', { d })}${d > 0 && (d % PERIOD === 0 || d === DUR) ? ' · ' + t('tipFee') : ''}</div>` +
       rows.map(m => `<div class="row"><i style="background:${m.color}"></i>${esc(m.name)}<b>${usd(m.net[d])}</b></div>`).join('');
     tip.style.display = 'block';
     const cx = x(d) * (r.width / W), tw = tip.offsetWidth;
@@ -156,5 +160,5 @@
   }
 
   draw();
-  let t; window.addEventListener('resize', () => { clearTimeout(t); t = setTimeout(draw, 120); });
+  let timer; window.addEventListener("resize", () => { clearTimeout(timer); timer = setTimeout(draw, 120); });
 })();

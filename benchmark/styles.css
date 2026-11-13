@@ -52,7 +52,7 @@ body {
   margin: 0;
   background: var(--page);
   color: var(--text-primary);
-  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "PingFang SC", "Microsoft YaHei", "Noto Sans Arabic", sans-serif;
 }
 a { color: var(--accent); }
 .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
@@ -61,8 +61,9 @@ header.site { border-bottom: 1px solid var(--border); background: var(--surface-
 header.site .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap; }
 .brand { font-weight: 700; font-size: 1.1rem; letter-spacing: -0.01em; text-decoration: none; color: var(--text-primary); }
 .brand span { color: var(--text-muted); font-weight: 500; }
-nav a { margin-left: 18px; text-decoration: none; font-weight: 500; }
-nav a:first-child { margin-left: 0; }
+nav { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+nav select { font: inherit; font-size: 0.9rem; color: var(--text-primary); background: var(--surface-1); border: 1px solid var(--border); border-radius: 6px; padding: 3px 6px; }
+nav a { text-decoration: none; font-weight: 500; }
 nav a[aria-current="page"] { color: var(--text-primary); text-decoration: underline; text-underline-offset: 6px; }
 
 .hero { padding: 40px 0 8px; }
@@ -107,17 +108,17 @@ nav a[aria-current="page"] { color: var(--text-primary); text-decoration: underl
 .tooltip .t { color: var(--text-secondary); margin-bottom: 4px; }
 .tooltip .row { display: flex; align-items: center; gap: 7px; }
 .tooltip .row i { width: 10px; height: 3px; border-radius: 2px; flex: none; }
-.tooltip .row b { margin-left: auto; padding-left: 12px; font-variant-numeric: tabular-nums; font-weight: 600; }
+.tooltip .row b { margin-inline-start: auto; padding-inline-start: 12px; font-variant-numeric: tabular-nums; font-weight: 600; }
 
 .table-scroll { overflow-x: auto; }
 table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
-th, td { padding: 9px 8px; text-align: right; white-space: nowrap; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
+th, td { padding: 9px 8px; text-align: end; white-space: nowrap; border-bottom: 1px solid var(--grid); font-variant-numeric: tabular-nums; }
 th { color: var(--text-secondary); font-weight: 600; font-size: 0.8rem; }
-th:nth-child(-n+3), td:nth-child(-n+3) { text-align: left; }
+th:nth-child(-n+3), td:nth-child(-n+3) { text-align: start; }
 tbody tr:last-child td { border-bottom: 0; }
 td .name { font-weight: 600; display: inline-flex; align-items: center; gap: 8px; }
 td .name i { width: 10px; height: 10px; border-radius: 50%; }
-td .company { color: var(--text-muted); font-size: 0.8rem; display: block; margin-left: 18px; }
+td .company { color: var(--text-muted); font-size: 0.8rem; display: block; margin-inline-start: 18px; }
 .up { color: var(--good); }
 .down { color: var(--critical); }
 .badge { display: inline-block; padding: 1px 9px; border-radius: 999px; border: 1px solid var(--border); font-size: 0.78rem; }
@@ -130,9 +131,9 @@ td .company { color: var(--text-muted); font-size: 0.8rem; display: block; margi
 
 .rules h2 { margin: 28px 0 6px; font-size: 1.2rem; }
 .rules h2:first-of-type { margin-top: 6px; }
-.rules ol { padding-left: 1.4em; margin: 0; }
+.rules ol { padding-inline-start: 1.4em; margin: 0; }
 .rules li { margin: 6px 0; }
 .rules .example { background: var(--page); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; font-size: 0.92rem; margin: 12px 0 0; }
-.rules .open { border-left: 3px solid var(--warning-border); padding-left: 10px; color: var(--text-secondary); }
+.rules .open { border-inline-start: 3px solid var(--warning-border); padding-inline-start: 10px; color: var(--text-secondary); }
 
 footer { color: var(--text-muted); font-size: 0.82rem; padding: 8px 0 40px; }
