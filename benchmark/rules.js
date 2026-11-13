@@ -58,11 +58,12 @@
       ['9. Servicios de pago', [
         'La empresa del modelo puede ofrecer servicios de inversión a inversores individuales basados en su modelo. La empresa fija el precio de la suscripción.',
         'El cliente paga la suscripción con independencia de que el modelo gane o pierda.',
-        'La empresa paga al sitio un porcentaje del importe invertido por cada cliente.',
+        'La empresa paga al sitio el 2 % del importe invertido por cada cliente.',
+        'Los clientes suscritos ven las operaciones del modelo actualizadas cada 3 horas, junto con el histórico completo.',
         'La empresa es la única responsable de esos servicios y de contar con las autorizaciones que exija la ley para prestarlos. El sitio no gestiona ni custodia dinero de los clientes.',
         'Los usuarios pueden comprar el informe detallado de los movimientos de un modelo. La empresa del modelo recibe el 40 % de lo que paga el cliente y el sitio el 60 %.',
-        '?Propuesta de precio del informe detallado: 15 USD por los movimientos de un modelo en un periodo de 30 días.',
-        '?Pendiente: porcentaje del importe invertido que la empresa paga al sitio, y momento en que los clientes ven cada operación.',
+        '?Propuesta de precio del informe detallado: 5 USD por los movimientos de un modelo en un periodo de 30 días.',
+        '?Pendiente: si el 2 % se paga una sola vez o cada año.',
       ]],
       ['10. Aviso legal e idiomas', [
         'El contenido del sitio es informativo. No es asesoramiento financiero ni una recomendación de inversión.',
@@ -127,11 +128,12 @@
       ['9. Paid services', [
         'The model’s company may offer investment services to individual investors based on its model. The company sets the subscription price.',
         'The client pays the subscription whether the model gains or loses.',
-        'The company pays the site a percentage of the amount invested by each client.',
+        'The company pays the site 2% of the amount invested by each client.',
+        'Subscribed clients see the model’s trades updated every 3 hours, together with the full history.',
         'The company is solely responsible for those services and for holding any authorisations the law requires to provide them. The site does not manage or hold clients’ money.',
         'Users may buy the detailed report of a model’s trades. The model’s company receives 40% of what the client pays and the site 60%.',
-        '?Proposed price of the detailed report: USD 15 for one model’s trades over a 30-day period.',
-        '?Pending: the percentage of the invested amount that the company pays the site, and when clients see each trade.',
+        '?Proposed price of the detailed report: USD 5 for one model’s trades over a 30-day period.',
+        '?Pending: whether the 2% is paid once or every year.',
       ]],
       ['10. Legal notice and languages', [
         'The content of the site is informational. It is not financial advice or an investment recommendation.',
@@ -196,11 +198,12 @@
       ['9. 付费服务', [
         '模型所属公司可以基于其模型向个人投资者提供投资服务。订阅价格由公司确定。',
         '无论模型盈利还是亏损，客户均须支付订阅费。',
-        '公司按每位客户的投资金额向本站支付一定比例的费用。',
+        '公司按每位客户投资金额的 2% 向本站支付费用。',
+        '订阅客户可以查看模型的交易记录，每 3 小时更新一次，并可查看完整历史记录。',
         '公司对上述服务以及取得法律要求的相关许可独自负责。本站不管理也不托管客户资金。',
         '用户可以购买某个模型的交易明细报告。客户所付费用的 40% 归模型所属公司，60% 归本站。',
-        '?明细报告的建议价格：某个模型 30 天内的交易明细为 15 美元。',
-        '?待定：公司按投资金额向本站支付的比例，以及客户何时可以看到每笔交易。',
+        '?明细报告的建议价格：某个模型 30 天内的交易明细为 5 美元。',
+        '?待定：2% 的费用是一次性支付还是每年支付。',
       ]],
       ['10. 法律声明与语言', [
         '本站内容仅供参考，不构成财务建议或投资推荐。',
@@ -265,11 +268,12 @@
       ['9. الخدمات المدفوعة', [
         'يجوز لشركة النموذج تقديم خدمات استثمارية للمستثمرين الأفراد اعتمادًا على نموذجها. تحدد الشركة سعر الاشتراك.',
         'يدفع العميل الاشتراك سواء ربح النموذج أم خسر.',
-        'تدفع الشركة للموقع نسبة من المبلغ الذي يستثمره كل عميل.',
+        'تدفع الشركة للموقع 2% من المبلغ الذي يستثمره كل عميل.',
+        'يطّلع العملاء المشتركون على صفقات النموذج محدَّثة كل 3 ساعات، مع السجل الكامل.',
         'الشركة هي المسؤولة الوحيدة عن تلك الخدمات وعن الحصول على التراخيص التي يشترطها القانون لتقديمها. لا يدير الموقع أموال العملاء ولا يحفظها.',
         'يمكن للمستخدمين شراء التقرير المفصَّل لصفقات نموذج معيّن. تحصل شركة النموذج على 40% مما يدفعه العميل ويحصل الموقع على 60%.',
-        '?السعر المقترح للتقرير المفصَّل: 15 دولارًا أمريكيًا عن صفقات نموذج واحد خلال فترة 30 يومًا.',
-        '?معلَّق: النسبة من المبلغ المستثمَر التي تدفعها الشركة للموقع، وموعد اطلاع العملاء على كل صفقة.',
+        '?السعر المقترح للتقرير المفصَّل: 5 دولارات أمريكية عن صفقات نموذج واحد خلال فترة 30 يومًا.',
+        '?معلَّق: هل تُدفع نسبة 2% مرة واحدة أم كل سنة.',
       ]],
       ['10. إشعار قانوني واللغات', [
         'محتوى الموقع لأغراض إعلامية. لا يُعد استشارة مالية ولا توصية استثمارية.',

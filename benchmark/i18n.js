@@ -31,8 +31,8 @@
       s4b: 'Las pérdidas, para la empresa', s4t: 'El sitio no cubre ni comparte pérdidas. Las asume íntegramente la empresa del modelo.',
       footer: 'Este sitio es un benchmark informativo y no constituye asesoramiento financiero ni recomendación de inversión. Rentabilidades pasadas no garantizan resultados futuros.',
       rulesH1: 'Normas del benchmark',
-      rulesIntro: 'Versión 0.4 (borrador). Los puntos marcados como «pendiente» están por decidir y se cerrarán antes de admitir al primer participante.',
-      rulesFooter: 'Benchmark 5K · Normas v0.4',
+      rulesIntro: 'Versión 0.5 (borrador). Los puntos marcados como «pendiente» están por decidir y se cerrarán antes de admitir al primer participante.',
+      rulesFooter: 'Benchmark 5K · Normas v0.5',
     },
     en: {
       title: 'Benchmark 5K · AI models invest $5,000',
@@ -60,8 +60,8 @@
       s4b: 'Losses stay with the company', s4t: 'The site does not cover or share losses. The model’s company bears them in full.',
       footer: 'This site is an informational benchmark and is not financial advice or an investment recommendation. Past performance does not guarantee future results.',
       rulesH1: 'Benchmark rules',
-      rulesIntro: 'Version 0.4 (draft). Items marked “pending” are still to be decided and will be settled before the first participant is admitted.',
-      rulesFooter: 'Benchmark 5K · Rules v0.4',
+      rulesIntro: 'Version 0.5 (draft). Items marked “pending” are still to be decided and will be settled before the first participant is admitted.',
+      rulesFooter: 'Benchmark 5K · Rules v0.5',
     },
     zh: {
       title: 'Benchmark 5K · AI 模型投资 5,000 美元',
@@ -89,8 +89,8 @@
       s4b: '亏损由公司承担', s4t: '本站不承担也不分担亏损，亏损全部由模型所属公司承担。',
       footer: '本站为信息性基准测试，不构成财务建议或投资推荐。过往业绩不代表未来表现。',
       rulesH1: '基准测试规则',
-      rulesIntro: '版本 0.4（草案）。标为“待定”的条款尚未确定，将在接纳首位参赛者之前确定。',
-      rulesFooter: 'Benchmark 5K · 规则 v0.4',
+      rulesIntro: '版本 0.5（草案）。标为“待定”的条款尚未确定，将在接纳首位参赛者之前确定。',
+      rulesFooter: 'Benchmark 5K · 规则 v0.5',
     },
     ar: {
       title: 'Benchmark 5K · نماذج الذكاء الاصطناعي تستثمر 5,000 دولار',
@@ -118,8 +118,8 @@
       s4b: 'الخسائر على الشركة', s4t: 'لا يغطي الموقع الخسائر ولا يشارك فيها. تتحملها شركة النموذج كاملة.',
       footer: 'هذا الموقع معيار قياس لأغراض إعلامية، ولا يُعد استشارة مالية ولا توصية استثمارية. الأداء السابق لا يضمن النتائج المستقبلية.',
       rulesH1: 'قواعد المعيار',
-      rulesIntro: 'الإصدار 0.4 (مسودة). البنود المشار إليها بكلمة «معلَّق» لم تُحسم بعد، وستُحسم قبل قبول أول مشارك.',
-      rulesFooter: 'Benchmark 5K · القواعد v0.4',
+      rulesIntro: 'الإصدار 0.5 (مسودة). البنود المشار إليها بكلمة «معلَّق» لم تُحسم بعد، وستُحسم قبل قبول أول مشارك.',
+      rulesFooter: 'Benchmark 5K · القواعد v0.5',
     },
   };
 
